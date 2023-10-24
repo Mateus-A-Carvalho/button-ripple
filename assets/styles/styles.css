@@ -1,3 +1,17 @@
+:root {
+  --body-font-size: 1.8rem;
+  --bdrs: 9999rem;
+  --bgc-btn: linear-gradient(
+    90deg,
+    rgba(82, 15, 112, .85),
+    rgba(34, 11, 78, .85)
+  );
+  --btn-font-color: rgba(225, 225, 225, .85);
+  --body-bgc: rgba(222, 200, 255, .85);
+  --transition-time: .3s ease-in-out;
+  --box-shadow: 0 .4rem .8rem rgba(23, 23, 23, .4);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12,4 +26,47 @@ html {
 
 body {
   height: 100%;
+  font-size: var(--body-font-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--body-bgc)
+}
+
+button.btn {
+  width: 30rem;
+  height: 15rem;
+  font-size: 2em;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  border-radius: var(--bdrs);
+  outline: none;
+  border: none;
+  color: var(--btn-font-color);
+  background: var(--bgc-btn);
+  cursor: pointer;
+  box-shadow: var(--box-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+button.btn::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 204, 0, 1),
+    rgba(255, 214, 51, 1)
+  );
+  border-radius: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: width .3s, height .3s;
+}
+
+button.btn:hover::before {
+  width: 30rem;
+  height: 30rem;
 }
