@@ -1,6 +1,6 @@
 :root {
   --body-font-size: 1.8rem;
-  --bdrs: 9999rem;
+  --bdrs: .5rem;
   --bgc-btn: linear-gradient(
     90deg,
     rgba(82, 15, 112, .85),
@@ -10,6 +10,8 @@
   --body-bgc: rgba(222, 200, 255, .85);
   --transition-time: .3s ease-in-out;
   --box-shadow: 0 .4rem .8rem rgba(23, 23, 23, .4);
+  --Xposition: 50%;
+  --Ypositon: 50%
 }
 
 * {
@@ -33,7 +35,7 @@ body {
   background-color: var(--body-bgc)
 }
 
-button.btn {
+a.btn {
   width: 30rem;
   height: 15rem;
   font-size: 2em;
@@ -47,9 +49,13 @@ button.btn {
   box-shadow: var(--box-shadow);
   position: relative;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 }
 
-button.btn::before {
+a.btn::before {
   content: "";
   position: absolute;
   width: 0;
@@ -60,13 +66,22 @@ button.btn::before {
     rgba(255, 214, 51, 1)
   );
   border-radius: 100%;
-  top: 50%;
-  left: 50%;
+  top: var(--Ypositon);
+  left: var(--Xposition);
   transform: translate(-50%, -50%);
   transition: width .3s, height .3s;
 }
 
-button.btn:hover::before {
+a.btn:hover::before {
   width: 30rem;
   height: 30rem;
+}
+
+span {
+  z-index: 5;
+}
+
+a.btn:hover:has(span) span {
+  transition: var(--transition-time);
+  color: #2b2b2b
 }
